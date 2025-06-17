@@ -1,123 +1,105 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+
 
 function Counter() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (count < 23) {
-      const timer = setTimeout(() => {
-        setCount(count + 1);
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [count]);
+    const interval = setInterval(() => {
+      setCount(prev => {
+        if (prev >= 1980) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 0); 
+
+    return () => clearInterval(interval); 
+  }, []); 
 
   return (
-    <div className='d-flex year'>
-        <div className='d-flex'>
-           <h4 className='count'>{count}</h4> 
-           <span className='plus'>+</span>
-        </div>
-      <span className='ence'>Years Of <br/> Experience</span>
-    </div>
+      <p className="count"> {count}</p>
   );
 }
 
 
-function Counter1() {
+
+function Timer() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (count < 215) {
-      const timer = setTimeout(() => {
-        setCount(count + 1);
-      },10);
-      return () => clearTimeout(timer); // cleanup
-    }
-  }, [count]);
+    const interval = setInterval(() => {
+      setCount(prev => {
+        if (prev >= 1000) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 0); 
+
+    return () => clearInterval(interval); 
+  }, []); 
 
   return (
-     <div className='year'>
-        <div className='d-flex justify-content-center	'>
-           <h4 className='count1'>{count}</h4> 
-           <span className='plus1'>+</span>
-        </div>
-      <span className='ence1'>CURRENT CLIENTS</span>
-    </div>
+      <p className="count"> {count}+</p>
   );
 }
 
 
-function Counter2() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (count < 550) {
-      const timer = setTimeout(() => {
-        setCount(count + 1);
-      },2);
-      return () => clearTimeout(timer); // cleanup
-    }
-  }, [count]);
-
-  return (
-     <div className='year'>
-        <div className='d-flex justify-content-center	'>
-           <h4 className='count1'>{count}</h4> 
-           <span className='plus1'>+</span>
-        </div>
-      <span className='ence1'>PROJECTS COMPLETE</span>
+function Footer(){
+return(
+  <section className="bg-dark pt-5 pb-4"> 
+  <div className="container-fluid">
+    <div className="row our">
+      <div className="col-lg-3 one1">
+        <img className="campr" src="camper.png"/>
+      </div>
+      <div className="col-lg-3 one2">
+        <h2 className="text-light link">Useful Links</h2>
+        <ul className="text-light list-unstyled  lst">
+          <li className="mt-4">Customer Support</li>
+          <li className="mt-3  ">Privacy & Policy</li>
+          <li className="mt-3">Our Story</li>
+          <li className="mt-3">Be Our Partner</li>
+        </ul>
+      </div>
+      <div className="col-lg-3 one3">
+        <h2 className="text-light link">Contact</h2>
+        <ul className="text-light list-unstyled  lst">
+          <li className="mt-4"><span className="t">T : </span>1-634-567-34</li>
+          <li className="mt-3  "><span className="t">E : </span>contact@traveltourtheme.co</li>
+        </ul>
+        <ul className="text-light list-unstyled d-flex its">
+          <li><i class="fa-brands fa-facebook-f"></i></li>
+          <li><i class="fa-brands fa-x-twitter"></i></li>
+          <li><i class="fa-brands fa-pinterest-p"></i></li>
+          <li><i class="fa-brands fa-tiktok"></i></li>
+        </ul>
+      </div>
+      <div className="col-lg-3 one4">
+        <h2 className="text-light link">Pay Safely With Us</h2>
+        <p className="t pe-2 mt-4">The payment is encrypted and transmitted securely with an SSL protocol.</p>
+        <ul className="text-light list-unstyled d-flex paypal">
+          <li><i class="fa-brands fa-cc-paypal"></i></li>
+          <li><i class="fa-brands fa-cc-visa"></i></li>
+          <li><i class="fa-brands fa-cc-mastercard"></i></li>
+          <li><i class="fa-brands fa-cc-amex"></i></li>
+        </ul>
+      </div>
     </div>
-  );
-}
-
-
-function Counter3() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (count < 21) {
-      const timer = setTimeout(() => {
-        setCount(count + 1);
-      },50);
-      return () => clearTimeout(timer); // cleanup
-    }
-  }, [count]);
-
-  return (
-     <div className='year'>
-        <div className='d-flex justify-content-center	'>
-           <h4 className='count1'>{count}</h4> 
-           <span className='plus1'>+</span>
-        </div>
-      <span className='ence1'>YEARS OF EXPERIENCE</span>
+    <div className="d-flex justify-content-between mt-5 pt-3">
+      <p className="and">Copyright © 2025 GoodLayers. All Rights Reserved.</p>
+      <ul className="text-light list-unstyled d-flex no">
+        <li>Terms of Service</li>
+        <li>Privacy Policy</li>
+        <li>Sitemap</li>
+      </ul>
     </div>
-  );
-}
-
-
-
-function Counter4() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (count < 25) {
-      const timer = setTimeout(() => {
-        setCount(count + 1);
-      },30);
-      return () => clearTimeout(timer); // cleanup
-    }
-  }, [count]);
-
-  return (
-     <div className='year'>
-        <div className='d-flex justify-content-center	'>
-           <h4 className='count1'>{count}</h4> 
-           <span className='plus1'>+</span>
-        </div>
-      <span className='ence1'>OFFICES WORLDWIDE</span>
-    </div>
-  );
+  </div>
+  </section>
+)
 }
 
 
@@ -125,4 +107,7 @@ function Counter4() {
 
 
 
-export {Counter,Counter1,Counter2,Counter3,Counter4};
+
+
+
+export {Counter, Timer, Footer};

@@ -1,10 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Five from './allpages'
+import './index.css'
+import All from './allpages'
+
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-   <Five/>
-  </StrictMode>,
+ <StrictMode>
+ <All/>
+</StrictMode>
 )

@@ -1,105 +1,49 @@
-import { Link } from "react-router-dom";
-import "./App.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import './App.css';
 
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <section className="container-fluid position-relative p-0">
-      <div className="flexx position-absolute">
-        
-        {/* LOGO + TOGGLE in one row */}
-        <div className="top-bar">
-          <img className="logo" src="bliize.svg" alt="Logo" />
-          <button className="toggle-btn" onClick={() => setMenuOpen(!menuOpen)}>
-  <i className={menuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
-</button>
-
+    <div className="main">
+      <div className="container-fluid flexx navbar">
+        <div>
+          <img className="camper" src="camper.png" alt="cam" />
         </div>
 
-        {/* Navigation Menu */}
-        <div className={`nav-menu ${menuOpen ? "show" : ""}`}>
-          <ul className="flex">
+        {/* Hamburger button */}
+        <div className="toggle-btn" onClick={toggleMenu}>
+          <i className="fa-solid fa-bars"></i>
+        </div>
+
+        {/* Menu Items */}
+        <div className={`nav-items ${isOpen ? 'open' : ''}`}>
+          <ul className="list">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/pages">Pages</Link></li>
-            <li><Link to="/project">Project</Link></li>
-            <li><Link to="/shop">Shop</Link></li>
+            <li><Link to="/tourlist">Tour List</Link></li>
+            <li><Link to="/toursearch">Tour Search</Link></li>
             <li><Link to="/blog">Blog</Link></li>
           </ul>
         </div>
-
-        {/* Search + Button (hidden on mobile) */}
-        <div className="flex1">
-          <div className="search">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <div>
-            <button type="button" className="button">Contact Now</button>
+        <div className="down">
+            <div className="two">
+            <div className="usd">
+              <p>USD <i className="fa-solid fa-caret-down"></i></p>
+            </div>
+            <div className="login">
+              <p>Login</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
 
-
-
-function Navbar1() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <section className="container-fluid pre position-relative">
-      <div className="position-absolute pae flexx">
-        
-        {/* LOGO + TOGGLE in one row */}
-        <div className="top-bar">
-          <img className="logo" src="bl.svg"alt="Logo" />
-          <button className="toggle-btn toggle1" onClick={() => setMenuOpen(!menuOpen)}>
-  <i className={menuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
-</button>
-
-        </div>
-
-        {/* Navigation Menu */}
-        <div className={`nav-menu ${menuOpen ? "show" : ""}`} id="openn">
-          <ul className="flex blr">
-                        <li>
-                           <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                           <Link to="/pages">Pages</Link>
-                        </li>
-                        <li>
-                           <Link to="/project">Project</Link>
-                        </li>
-                        <li>
-                           <Link to="/shop">Shop</Link>
-                        </li>
-                        <li>
-                           <Link to="/blog">Blog</Link>
-                        </li>
-                    </ul>
-        </div>
-
-        {/* Search + Button (hidden on mobile) */}
-        <div className="flex1">
-                    <div className="search shr">
-                       <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <div>
-                        <button type="button" className="button btnn">Contact Now</button>
-                    </div>
-               </div>
-      </div>
-    </section>
-  );
-}
-
-
-
-
-
-
-export {Navbar ,Navbar1};
+export default Navbar;
